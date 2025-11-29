@@ -21,6 +21,12 @@
   --text:      #202124;
   --muted:     #607d8b;
 }
+  .appicon {
+  font-size: 2.8rem;
+  color: var(--accent);
+  vertical-align: middle;
+  margin-right: 12px;
+}
 /* ─────── Basics ─────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -131,13 +137,13 @@ footer .material-icons-round{font-size:1rem;vertical-align:-2px;color:#e57373}
   </nav>
   <!-- ...rest of your content... -->
 <div class="topbar">
-  <h1>
-    <span class="material-icons-round" style="font-size:1.6rem;vertical-align:-4px">favorite</span>
-    Insulin Log Buddy
-    <span class="badge">v1.0</span>
-  </h1>
-  <p class="tagline">Your daily partner for happier, healthier diabetes management.</p>
-</div>
+    <span class="material-icons-round appicon">favorite</span>
+    <h1>
+      Insulin Log Buddy
+      <span class="badge">v1.0</span>
+    </h1>
+    <p class="tagline">Your daily partner for happier, healthier diabetes management.</p>
+  </div>
 
 <div class="wrapper">
 
@@ -212,3 +218,4 @@ footer .material-icons-round{font-size:1rem;vertical-align:-2px;color:#e57373}
 </body>
 
 </html>
+
