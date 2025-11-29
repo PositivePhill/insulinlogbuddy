@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insulin Log Buddy</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <!-- Material Icons (optional) -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1565c0;
+      --primary-2: #1e88e5;
+      --accent: #ff9800;
+      --bg: #e8f1ff;
+      --card: #ffffff;
+      --text: #23272f;
+      --muted: #607d8b;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      min-height: 100vh;
+    }
+    .topbar {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      padding: 38px 20px 34px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.11);
+    }
+    .appicon {
+      font-size: 2.8rem;
+      color: var(--accent);
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .tagline {
+      margin-top: 14px;
+      font-size: 1.13rem;
+      color: #bbdefb;
+      font-weight: 400;
+    }
+    .cards {
+      max-width: 480px;
+      margin: 36px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(21, 101, 192, 0.11), 0 0 0 1px #e3edfa;
+      padding: 28px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      animation: fadeIn .7s;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(18px);} to { opacity: 1; transform: none;}}
+    .card h2 {
+      font-size: 1.18rem;
+      margin: 0 0 10px 0;
+      color: var(--primary-2);
+      font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card .material-icons-round {
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+    .app-links {
+      margin-top: 14px;
+    }
+    .app-links a {
+      display: inline-block;
+      background: var(--primary-2);
+      color: #fff;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      margin-right: 10px;
+      transition: background 0.18s;
+      font-size: 1.06rem;
+      box-shadow: 0 2px 6px rgba(21, 101, 192, 0.08);
+    }
+    .app-links a:last-child {margin-right: 0;}
+    .app-links a:hover { background: var(--accent); color: #23272f;}
+    .footer {
+      text-align: center;
+      margin: 48px 0 20px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .footer .material-icons-round {
+      font-size: 1.1rem; vertical-align: -2px; color: #e57373;
+    }
+    @media (max-width: 600px) {
+      .cards {padding: 0 5px;}
+      .card {padding: 22px 10px 18px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span class="material-icons-round appicon">favorite</span>
+    <h1>Insulin Log Buddy</h1>
+    <div class="tagline">Your companion for diabetes management—secure, friendly, and fun.</div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h2><span class="material-icons-round">info</span>What is this?</h2>
+      <div>
+        <strong>Insulin Log Buddy</strong> is a modern Android app for logging insulin doses, glucose, carbs, and more.<br>
+        Track, export, and play mini-games—all with your privacy protected.
+      </div>
+    </div>
+    <div class="card">
+      <h2><span class="material-icons-round">shield</span>Privacy &amp; Trust</h2>
+      <div>
+        We take your data seriously. Our <a href="privacy.html">Privacy &amp; Trust Policy 🛡️</a> explains how your info stays safe.
+      </div>
+    </div>
+    <div class="card">
+      <h2><span class="material-icons-round">download</span>Get the App</h2>
+      <div class="app-links">
+        <!-- Replace with your actual Play Store link when live! -->
+        <a href="#" title="Coming soon!">Play Store (soon)</a>
+        <!-- For public APK: -->
+        <!-- <a href="https://github.com/yourusername/insulinlogbuddy/releases" target="_blank">Download APK</a> -->
+      </div>
+    </div>
+    <div class="card">
+      <h2><span class="material-icons-round">email</span>Contact</h2>
+      <div>
+        Questions or feedback? <a href="mailto:insulinlogbuddy@gmail.com">Email us</a> anytime!
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Insulin Log Buddy • Made with <span class="material-icons-round">coffee</span> &amp; care.
+  </div>
+</body>
+</html>
