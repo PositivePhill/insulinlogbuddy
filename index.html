@@ -4,238 +4,325 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Insulin Log Buddy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
   <link rel="icon" href="favicon.ico" />
   <style>
     :root {
-      --primary: #1565c0;
-      --primary-2: #1e88e5;
-      --accent: #ff9800;
-      --bg: #e8f1ff;
-      --card: #ffffff;
-      --text: #23272f;
-      --muted: #607d8b;
+      /* Cyber/Dark Theme Palette */
+      --bg-dark: #020617;     /* Slate 950 */
+      --card-bg: #0f172a;     /* Slate 900 */
+      --text-main: #e2e8f0;   /* Slate 200 */
+      --text-muted: #94a3b8;  /* Slate 400 */
+      --accent-primary: #3b82f6; /* Blue 500 */
+      --accent-glow: #60a5fa;    /* Blue 400 */
+      --accent-secondary: #10b981; /* Emerald 500 */
     }
+
     body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, #1e293b 0%, transparent 70%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+      color: var(--text-main);
       margin: 0;
       min-height: 100vh;
+      overflow-x: hidden;
     }
+
+    /* Navigation */
     nav {
-      background: linear-gradient(90deg,#1565c0,#1e88e5);
-      color: #fff;
-      padding: 13px 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 16px 0;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(21,101,192,0.09);
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-      margin-bottom: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     nav a {
-      color: #fff;
+      color: var(--text-muted);
       text-decoration: none;
-      padding: 0 18px;
-      font-weight: 500;
-      font-size: 1.09rem;
-      transition: color 0.15s;
+      padding: 8px 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border-radius: 20px;
     }
-    nav a:hover { color: var(--accent); }
-    .topbar {
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    nav a:hover {
       color: #fff;
-      padding: 38px 20px 34px;
-      text-align: center;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.11);
+      text-shadow: 0 0 8px var(--accent-primary);
+      background: rgba(59, 130, 246, 0.1);
     }
+
+    /* Hero Section */
+    .topbar {
+      padding: 80px 20px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .topbar::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background: var(--accent-primary);
+      filter: blur(120px);
+      opacity: 0.15;
+      z-index: -1;
+    }
+
     .appicon {
-      font-size: 2.8rem;
-      color: var(--accent);
+      font-size: 3.5rem;
+      background: -webkit-linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       vertical-align: middle;
       margin-right: 12px;
+      filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));
     }
+
     h1 {
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
       margin: 0;
       display: inline-block;
       vertical-align: middle;
+      color: #fff;
     }
+
     .badge {
-      background: var(--accent);
-      color: #000;
-      font-size: .85rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-secondary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 2px 10px;
-      border-radius: 9999px;
-      margin-left: 8px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-left: 12px;
+      vertical-align: top;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
     .tagline {
-      margin-top: 14px;
-      font-size: 1.13rem;
-      color: #bbdefb;
+      margin-top: 16px;
+      font-size: 1.2rem;
+      color: var(--text-muted);
       font-weight: 400;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
     .wrapper {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 20px 80px;
     }
+
+    /* Cards Grid */
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
     }
+
     .card {
-      background: var(--card);
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(21, 101, 192, 0.11), 0 0 0 1px #e3edfa;
-      padding: 28px 22px 24px;
-      flex: 1 1 300px;
-      min-width: 270px;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      animation: fadeIn .7s;
+      background: rgba(30, 41, 59, 0.4); /* Semi-transparent */
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(5px);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-out;
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(18px);} to { opacity: 1; transform: none;}}
+    
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Glowing hover effect */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.06), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .card:hover::before { opacity: 1; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none;}}
+
     .card h2 {
-      font-size: 1.18rem;
-      margin: 0 0 10px 0;
-      color: var(--primary-2);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      margin: 0 0 16px 0;
+      color: #fff;
       font-weight: 700;
-      display: flex; align-items: center; gap: 8px;
+      display: flex; align-items: center; gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
+
     .card .material-icons-round {
-      color: var(--accent);
-      font-size: 1.3rem;
+      color: var(--accent-primary);
+      font-size: 1.4rem;
     }
+
+    .card strong {
+      color: var(--accent-secondary);
+    }
+
+    /* Links & Buttons */
     .app-links {
-      margin-top: 14px;
+      margin-top: 20px;
     }
     .app-links a {
-      display: inline-block;
-      background: var(--primary-2);
-      color: #fff;
-      font-weight: 500;
-      padding: 9px 20px;
-      border-radius: 7px;
-      text-decoration: none;
-      margin-right: 10px;
-      transition: background 0.18s;
-      font-size: 1.06rem;
-      box-shadow: 0 2px 6px rgba(21, 101, 192, 0.08);
-    }
-    .app-links a:last-child {margin-right: 0;}
-    .app-links a:hover { background: var(--accent); color: #23272f;}
-    .feature-list {
-      margin: 18px 0 0 0;
-      padding-left: 20px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-    .screenshots {
-      margin: 38px 0 0 0;
-      text-align: center;
-    }
-    .screenshots img {
-      max-width: 200px;
-      border-radius: 10px;
-      box-shadow: 0 2px 16px rgba(21,101,192,0.11);
-      margin: 0 8px 16px 8px;
+      display: inline-flex;
+      align-items: center;
       background: #fff;
+      color: #000;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.95rem;
     }
+    .app-links a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .feature-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .feature-list li { margin-bottom: 8px; }
+
+    /* Footer */
     .footer {
       text-align: center;
-      margin: 48px 0 20px;
-      color: var(--muted);
-      font-size: 0.96rem;
+      margin: 60px 0 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 40px;
     }
     .footer .material-icons-round {
-      font-size: 1.1rem; vertical-align: -2px; color: #e57373;
-    }
-    @media (max-width: 600px) {
-      .cards {flex-direction: column;}
-      .card {padding: 22px 10px 18px;}
-      .screenshots img {max-width: 100%;}
+      font-size: 1rem; vertical-align: -2px; color: #ef4444;
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html">← Back to Portfolio</a>
     <a href="privacy.html">Privacy & Trust</a>
     <a href="mailto:insulinlogbuddy@gmail.com">Contact</a>
   </nav>
+
   <div class="topbar">
     <span class="material-icons-round appicon">favorite</span>
     <h1>
       Insulin Log Buddy
       <span class="badge">v1.0</span>
     </h1>
-    <div class="tagline">Your companion for diabetes management—secure, friendly, and fun.</div>
+    <div class="tagline">Your companion for diabetes management. Secure. Friendly. Fun.</div>
   </div>
-  <div class="wrapper">
 
+  <div class="wrapper">
     <div class="cards">
+      
+      <!-- Info Card -->
       <div class="card">
-        <h2><span class="material-icons-round">info</span>What is Insulin Log Buddy?</h2>
+        <h2><span class="material-icons-round">terminal</span>Mission Protocol</h2>
         <div>
-          <strong>Insulin Log Buddy</strong> helps you log insulin, glucose, carbs, exercise, and more. Track, export, and even play mini-games. Simple, fast, and privacy-first.
+          <strong>Insulin Log Buddy</strong> is designed to simplify logging insulin, glucose, carbs, and exercise. It is built to be fast, crash-resistant, and entirely privacy-first.
         </div>
       </div>
+
+      <!-- Features Card -->
       <div class="card">
-        <h2><span class="material-icons-round">star</span>Features</h2>
+        <h2><span class="material-icons-round">bolt</span>System Features</h2>
         <ul class="feature-list">
-          <li>Modern, easy-to-use interface</li>
-          <li>Secure local storage—your data stays on your device</li>
-          <li>PDF and CSV export for your doctor or yourself</li>
-          <li>Fun mini-games to pass the time</li>
-          <li>Custom reminders and notifications</li>
+          <li>Modern, high-contrast interface</li>
+          <li>Encrypted local storage (No cloud leaks)</li>
+          <li>PDF/CSV data export for doctors</li>
+          <li>Built-in mini-games for downtime</li>
+          <li>Customizable notification triggers</li>
         </ul>
       </div>
+
+      <!-- Privacy Card -->
       <div class="card">
-        <h2><span class="material-icons-round">shield</span>Privacy & Trust</h2>
+        <h2><span class="material-icons-round">security</span>Privacy Core</h2>
         <div>
-          We take your data seriously. <a href="privacy.html">Read our Privacy & Trust Policy 🛡️</a> to learn how your info stays safe.
+          We take data security seriously. Your health data stays on your device, not on our servers. 
+          <br><br>
+          <a href="privacy.html" style="color:var(--accent-primary);text-decoration:none;">Read Protocol 🛡️</a>
         </div>
       </div>
+
+      <!-- Download Card -->
       <div class="card">
-        <h2><span class="material-icons-round">download</span>Get the App</h2>
+        <h2><span class="material-icons-round">download</span>Initialize App</h2>
         <div class="app-links">
-          <a href="#" title="Coming soon!">Play Store (soon)</a>
-          <!-- <a href="https://github.com/yourusername/insulinlogbuddy/releases" target="_blank">Download APK</a> -->
+          <a href="#" title="Coming soon!" style="opacity:0.7; cursor:not-allowed;">
+            <span class="material-icons-round" style="margin-right:8px; font-size:1.1rem;">android</span>
+            Play Store (Coming Soon)
+          </a>
         </div>
       </div>
+
+      <!-- Contact Card -->
       <div class="card">
-        <h2><span class="material-icons-round">email</span>Contact</h2>
+        <h2><span class="material-icons-round">alternate_email</span>Comms Channel</h2>
         <div>
-          <a href="mailto:insulinlogbuddy@gmail.com">Email us</a> anytime—feedback, questions, or just to say hi!
+          Feedback or bug reports? Open a channel with us anytime.
+          <br><br>
+          <a href="mailto:insulinlogbuddy@gmail.com" style="color:var(--text-main);">insulinlogbuddy@gmail.com</a>
         </div>
       </div>
-    </div>
 
-    <div class="screenshots">
-      <!-- Add your screenshot images here! Example: -->
-      <!-- <img src="screenshot1.png" alt="App screenshot 1"> -->
-      <!-- <img src="screenshot2.png" alt="App screenshot 2"> -->
     </div>
-
   </div>
+
   <div class="footer">
-  © 2025 Insulin Log Buddy<span style="font-size:1.1em;vertical-align:-2px;margin:0 3px;">™</span>
-  • Made with <span class="material-icons-round">coffee</span> &amp; care.<br>
-  <span style="font-size:0.96em; color:#607d8b;">
-    Insulin Log Buddy<span style="vertical-align:super;font-size:.9em;">™</span> is a trademark of Phillip Mattern. All rights reserved.
-  </span>
-</div>
+    © 2025 Insulin Log Buddy™ • Built with <span class="material-icons-round">coffee</span> & Code.
+    <br><br>
+    Insulin Log Buddy™ is a trademark of Phillip Mattern.
+  </div>
+
+  <script>
+    // Simple script to add mouse-tracking glow effect to cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.onmousemove = e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+  </script>
 </body>
 </html>
-
