@@ -3,220 +3,239 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Insulin Log Buddy • Privacy & Trust</title>
+<title>Insulin Log Buddy • Privacy Protocols</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-<!-- Material Icons (optional) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
 
 <style>
-/* ─────── Color + Spacing Tokens ─────── */
+/* ─────── Cyber Theme Tokens ─────── */
 :root{
-  --primary:   #1565c0;
-  --primary-2: #1e88e5;
-  --accent:    #ff9800;
-  --bg:        #e8f1ff;
-  --card:      #ffffff;
-  --text:      #202124;
-  --muted:     #607d8b;
+  --bg-dark: #020617;
+  --card-bg: #0f172a;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #10b981;
 }
-  .appicon {
-  font-size: 2.8rem;
-  color: var(--accent);
-  vertical-align: middle;
-  margin-right: 12px;
-}
-/* ─────── Basics ─────── */
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  font:400 16px/1.7 "Roboto", sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
+  font: 400 16px/1.7 "Inter", sans-serif;
+  background-color: var(--bg-dark);
+  /* Cyber Grid Background */
+  background-image: linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
 }
+
 .wrapper{
-  max-width:960px;
-  margin:0 auto;
-  padding:0 20px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
 }
+
 /* ─────── Top Bar ─────── */
 .topbar{
-  background:linear-gradient(135deg,var(--primary),var(--primary-2));
-  color:white;
-  padding:26px 20px 32px;
-  text-align:center;
-  border-bottom-left-radius:16px;
-  border-bottom-right-radius:16px;
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
+  text-align: center;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 40px;
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
 }
 .topbar h1{
-  font-size:1.9rem;
-  font-weight:500;
-  letter-spacing:.4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 .badge{
-  background:var(--accent);
-  color:#000;
-  font-size:.8rem;
-  font-weight:700;
-  padding:2px 10px;
-  border-radius:9999px;
-  margin-left:8px;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-primary);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-left: 10px;
+  vertical-align: middle;
 }
-.tagline{font-size:1.05rem;margin-top:10px;opacity:.9}
+.tagline{
+  color: var(--text-muted);
+  font-size: 1.1rem; 
+  margin-top: 10px;
+}
 
 /* ─────── Section Cards ─────── */
 section{
-  background:var(--card);
-  margin-top:28px;
-  padding:28px 26px 32px;
-  border-radius:14px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-  animation:fadeIn .6s ease;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  margin-top: 24px;
+  padding: 28px;
+  border-radius: 12px;
+  animation: slideUp 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
-@keyframes fadeIn{from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:none}}
+
+/* Staggered animation delay for sections */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+section:nth-child(5) { animation-delay: 0.5s; }
+section:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
 h2{
-  font-size:1.25rem;
-  font-weight:700;
-  color:var(--primary);
-  margin-bottom:16px;
-  display:flex;align-items:center;gap:8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 10px;
 }
 h2 .material-icons-round{
-  font-size:1.3rem;
-  color:var(--accent);
+  font-size: 1.4rem;
+  color: var(--accent-secondary);
 }
 
-ul{padding-left:22px;margin-top:-4px}
-li{margin-bottom:10px}
+ul{ padding-left: 20px; color: var(--text-muted); }
+li{ margin-bottom: 8px; }
+strong{ color: #fff; font-weight: 600; }
+em{ font-style: italic; color: var(--accent-primary); }
 
-strong{font-weight:700}
-em{font-style:italic}
 a{
-  color:var(--primary-2);
-  text-decoration:none;
-  font-weight:500;
-  position:relative;
+  color: var(--accent-primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-primary);
+  transition: all 0.2s;
 }
-a::after{
-  content:"";
-  position:absolute;left:0;bottom:-2px;width:100%;height:2px;
-  background:var(--primary-2);transform:scaleX(0);
-  transform-origin:left;transition:transform .3s;
+a:hover{ color: #fff; border-bottom-style: solid; }
+
+/* ─────── Navigation ─────── */
+nav {
+  text-align: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-a:hover::after{transform:scaleX(1)}
+nav a {
+  color: var(--text-muted);
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 15px;
+}
+nav a:hover { color: #fff; }
 
 /* ─────── Footer ─────── */
 footer{
-  text-align:center;
-  margin-top:40px;
-  font-size:.9rem;
-  color:var(--muted);
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
-footer .material-icons-round{font-size:1rem;vertical-align:-2px;color:#e57373}
 </style>
 </head>
 
 <body>
   
-  <nav style="
-    width:100%; 
-    background: linear-gradient(90deg,#1565c0,#1e88e5); 
-    color:#fff;
-    padding: 13px 0;
-    text-align:center;
-    box-shadow:0 2px 8px rgba(21,101,192,0.09);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    margin-bottom: 0;">
-    <a href="index.html" style="color:#fff;text-decoration:none;padding:0 18px;font-weight:500;">Home</a>
-    <a href="privacy.html" style="color:#fff;text-decoration:none;padding:0 18px;font-weight:500;">Privacy & Trust</a>
-    <a href="mailto:insulinlogbuddy@gmail.com" style="color:#fff;text-decoration:none;padding:0 18px;font-weight:500;">Contact</a>
+  <nav>
+    <a href="index.html">← Return to Portfolio</a>
+    <a href="privacy.html">Privacy & Trust</a>
+    <a href="mailto:insulinlogbuddy@gmail.com">Contact</a>
   </nav>
-  <!-- ...rest of your content... -->
-<div class="topbar">
-    <span class="material-icons-round appicon">favorite</span>
+  
+  <div class="topbar">
     <h1>
-      Insulin Log Buddy
-      <span class="badge">v1.0</span>
+      <span class="material-icons-round" style="font-size:1.8rem;vertical-align:-5px; color:var(--accent-secondary);">security</span>
+      Privacy Protocols
+      <span class="badge">SECURE</span>
     </h1>
-    <p class="tagline">Your daily partner for happier, healthier diabetes management.</p>
+    <p class="tagline">Transparency is our default setting.</p>
   </div>
 
 <div class="wrapper">
 
 <!-- Section 1 -->
 <section>
-  <h2><span class="material-icons-round">emoji_events</span>Our Promise</h2>
-  <p>We built Insulin Log Buddy because many of us live with diabetes too. We know your health data is <strong>deeply personal</strong>, so we protect it with the care, security, and respect it deserves—always.</p>
+  <h2><span class="material-icons-round">verified_user</span>The Promise</h2>
+  <p>We built Insulin Log Buddy because we live with diabetes too. We know health data is <strong>deeply personal</strong>. We treat your data like a state secret: protected, local, and yours alone.</p>
 </section>
 
 <!-- Section 2 -->
 <section>
-  <h2><span class="material-icons-round">inventory_2</span>Data We Collect</h2>
+  <h2><span class="material-icons-round">dataset</span>Data Collection</h2>
   <ul>
-    <li><strong>Insulin doses, glucose levels, carb intake</strong> – only what <em>you</em> type in.</li>
-    <li><strong>App preferences</strong> – theme, reminders, game credits.</li>
-    <li><strong>Optional crash reports</strong> – anonymous technical info to fix bugs fast.</li>
+    <li><strong>Input Data:</strong> Insulin, glucose, carbs (Only what you type).</li>
+    <li><strong>Preferences:</strong> Theme settings, game credits.</li>
+    <li><strong>Crash Reports:</strong> Anonymous technical data (Optional toggle).</li>
   </ul>
 </section>
 
 <!-- Section 3 -->
 <section>
-  <h2><span class="material-icons-round">lock</span>Where It Lives</h2>
-  <p>Your records stay <em>on your phone</em> in an encrypted database (Android Room). We <u>never</u> send them to our servers or share them with anyone.</p>
+  <h2><span class="material-icons-round">dns</span>Storage Architecture</h2>
+  <p>Your records reside <strong>locally on your device</strong> in an encrypted Android Room database. We do not have a cloud server. We cannot see your data even if we wanted to.</p>
 </section>
 
 <!-- Section 4 -->
 <section>
-  <h2><span class="material-icons-round">share_off</span>Sharing & Third-Party Access</h2>
+  <h2><span class="material-icons-round">public_off</span>Third-Party Access</h2>
   <ul>
-    <li><strong>No Ads:</strong> 100 % ad-free. Zero trackers.</li>
-    <li><strong>No Data Brokers:</strong> We never sell or trade your info.</li>
-    <li><strong>Optional PDF exports:</strong> Share reports only if and when <em>you</em> decide.</li>
+    <li><strong>Ads:</strong> None. Zero.</li>
+    <li><strong>Tracking:</strong> Disabled.</li>
+    <li><strong>Selling Data:</strong> Never.</li>
   </ul>
 </section>
 
 <!-- Section 5 -->
 <section>
-  <h2><span class="material-icons-round">vpn_key</span>Permissions</h2>
+  <h2><span class="material-icons-round">vpn_key</span>System Permissions</h2>
   <ul>
-    <li><strong>Notifications:</strong> Gentle reminders for logging and meds.</li>
-    <li><strong>Storage (optional):</strong> Needed only to save PDF reports you create.</li>
+    <li><strong>Notifications:</strong> Local triggers for reminders.</li>
+    <li><strong>Storage:</strong> Write access for PDF report generation (User initiated).</li>
   </ul>
 </section>
 
 <!-- Section 6 -->
 <section>
-  <h2><span class="material-icons-round">toggle_on</span>Your Controls</h2>
+  <h2><span class="material-icons-round">settings_suggest</span>User Controls</h2>
   <ul>
-    <li>Erase data anytime via <em>Settings → Erase Local Data</em>.</li>
-    <li>Uninstalling deletes all stored health data.</li>
-    <li>Toggle crash reporting under <em>Settings → Privacy</em>.</li>
+    <li><strong>Purge:</strong> <em>Settings → Erase Local Data</em> instantly wipes the DB.</li>
+    <li><strong>Uninstall:</strong> Removes all data permanently.</li>
   </ul>
 </section>
 
 <!-- Section 7 -->
 <section>
-  <h2><span class="material-icons-round">medical_information</span>Disclaimer</h2>
-  <p>Insulin Log Buddy is a personal tracking tool and <strong>not</strong> a medical device. Always follow professional medical advice. In an emergency, dial your local emergency services.</p>
+  <h2><span class="material-icons-round">gavel</span>Legal Disclaimer</h2>
+  <p>Insulin Log Buddy is a tracking utility, <strong>not a medical device</strong>. Decisions regarding medication should always be made under the guidance of a healthcare professional.</p>
 </section>
 
 <!-- Section 8 -->
 <section>
-  <h2><span class="material-icons-round">email</span>Contact Us</h2>
-  <p>Questions or feedback? Reach out: <a href="mailto:insulinlogbuddy@gmail.com">insulinlogbuddy@gmail.com</a>. We read every message!</p>
+  <h2><span class="material-icons-round">alternate_email</span>Contact Channel</h2>
+  <p>Questions? Signal us at: <a href="mailto:insulinlogbuddy@gmail.com">insulinlogbuddy@gmail.com</a></p>
 </section>
 
 <footer>
-  © 2025 Insulin Log Buddy • Made with <span class="material-icons-round">coffee</span> &amp; care
+  © 2025 Insulin Log Buddy • Secure by Design.
 </footer>
 
 </div><!-- /wrapper -->
 </body>
-
 </html>
-
-
